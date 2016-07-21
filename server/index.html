@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>WebSockets Test</title>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io(location.href);
+
+            socket.on('news', function (data) {
+                console.log('news', data);
+            });
+
+            socket.on('test response', function (data) {
+                console.log('test response', data);
+            });
+
+            function sendTest () {
+                socket.emit('test', {
+                    foo : 'bar'
+                });
+            }
+        </script>
+
+    </head>
+    <body>
+        <div>Check Console</div>
+        <button onClick="sendTest()">Send Test</button>
+    </body>
+</html>
